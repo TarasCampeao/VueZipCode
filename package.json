@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "zip_code",
   "version": "1.0.0",
   "description": "test project",
   "author": "Stanislav Sak",
@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "pug": "^2.0.0-rc.4",
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-resource": "^1.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -72,5 +73,13 @@
     "not ie <= 8"
   ],
   "main": "test.js",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TarasCampeao/VueZipCode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TarasCampeao/VueZipCode/issues"
+  },
+  "homepage": "https://github.com/TarasCampeao/VueZipCode#readme"
 }
