@@ -17,7 +17,7 @@
 					:key="city.id">
 					<div :class="{active: city.selected}"
 						 @click="checkCode(city)">
-						 {{ city.city }}, {{ city.state }}
+						 {{ city.city | filterLowerCase }}, {{ city.state }}
 					</div>
 			        <button class="delete_btn" @click="removeUser(city, index)">
 			        	<i class="far fa-trash-alt"></i>
@@ -88,6 +88,11 @@ export default {
 	          this.zipCode = response.body.DataList[0].Code;
 	      })
 	    }
+  	},
+  	filters: {
+  		filterLowerCase(value) {
+  			return value.toLowerCase();
+  		}
   	}
 }
 
