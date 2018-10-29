@@ -7,13 +7,16 @@
 			</div>
 			<button class="btn form_btn" @click="addCity">Add location</button>
 			<div class="form_error">{{error}}</div>
-			<!-- <div class="form_error" v-if="!showAlert">{{alertMessage}}</div> -->
 		</div>
 		<div class="city_zone">
 			<h3>Cities list!</h3>
 			<p v-if="!cities.length">No results. Please, try fill form!</p>
 			<ul v-if="cities.length" class="result_list">
-				<li class="city_item" v-for="city in cities" :key="city.id">
+				<li class="city_item" 
+					v-for="(city, index) in cities" 
+					:key="city.id"
+					:class="{active: city.selected}"
+					@click="checkCode(city)">
 					<div>{{ city.city }}, {{ city.state }}</div>
 			        <button class="delete_btn" @click="removeUser(city, index)">
 			        	<i class="far fa-trash-alt"></i>
@@ -23,7 +26,6 @@
 		</div>
 	</div>
 </template>
-
 
 
 <script>
@@ -71,9 +73,19 @@ export default {
 	          }     
 	      });
 	    },
-	    removeUser(user, index) {
+	    removeUser(city, index) {
 	    	this.cities.splice(index, 1);
 	    },
+	    checkCode (city) {
+	      this.cities.forEach( (item) => {
+	        item.selected = false;
+	      })
+	      city.selected = true;     
+	      this.$http.get(`${this.requestURL}/FindZipCodesInRadius/ByLatLon?latitude=${city.lat}&longitude=${city.long}&minimumradius=0&maximumradius=1&key=${this.API_KEY}`)
+	        .then ( (response) => {
+	          this.zipCode = response.body.DataList[0].Code;
+	      })
+	    }
   	}
 }
 
