@@ -14,10 +14,11 @@
 			<ul v-if="cities.length" class="result_list">
 				<li class="city_item" 
 					v-for="(city, index) in cities" 
-					:key="city.id"
-					:class="{active: city.selected}"
-					@click="checkCode(city)">
-					<div>{{ city.city }}, {{ city.state }}</div>
+					:key="city.id">
+					<div :class="{active: city.selected}"
+						 @click="checkCode(city)">
+						 {{ city.city }}, {{ city.state }}
+					</div>
 			        <button class="delete_btn" @click="removeUser(city, index)">
 			        	<i class="far fa-trash-alt"></i>
 			        </button>
@@ -43,7 +44,7 @@ export default {
 		}
 	},
     methods: {
-	    addCity () { 
+	    addCity () {
 	      this.$http.get(`${this.requestURL}/QuickGetZipCodeDetails/${this.zipCode}?key=${this.API_KEY}`)
 	        .then( (response) => {  
 	          this.cities.forEach( (item) => {
@@ -70,11 +71,12 @@ export default {
 	          } else {
 	              this.error = 'Sorry, but there is no city with such a zip-code!';
 	              this.zipCode = ''; 
-	          }     
+	          };
 	      });
 	    },
 	    removeUser(city, index) {
 	    	this.cities.splice(index, 1);
+	    	this.zipCode = '';
 	    },
 	    checkCode (city) {
 	      this.cities.forEach( (item) => {
