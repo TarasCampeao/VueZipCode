@@ -1,14 +1,24 @@
 @import "reset"
 
 h1
-	margin-bottom: 60px
+	margin-bottom: 40px
 
 h3
-	margin-bottom: 20px
+	margin-bottom: 15px
+
+.container
+	padding: 50px 15px
 
 .form_zone
 	display: flex
-	margin-bottom: 40px
+	margin-bottom: 50px
+	position: relative
+	.form_error
+		font-size: 16px
+		color: red
+		position: absolute
+		left: 0
+		top: 40px
 
 .input_cell
 	margin-right: 20px
@@ -33,3 +43,10 @@ input
 .result_list
 	li
 		text-transform: capitalize
+		margin-bottom: 10px
+		background: #f7eaea
+		padding: 10px
+		border-radius: 5px
+		color: gray
+		&:last-child
+			margin-bottom: 0

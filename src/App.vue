@@ -5,18 +5,18 @@
 </style>
 <template>
   <div id="app">
-    <zip-code></zip-code>
+    <zip-block></zip-block>
   </div>
 </template>
 
 <script>
-import ZipCode from './components/ZipCode.vue'
+import ZipBlock from './components/ZipBlock.vue'
 
 
 export default {
   name: 'app',
   components: {
-  	ZipCode,
+  	ZipBlock,
   },
 };
 </script>

@@ -3,7 +3,7 @@
 		<h1>Zip Code test</h1>
 		<div class="form_zone">
 			<div class="input_cell">
-				<input type="text" placeholder="Enter zip code" class="form_field" v-model="zipCode">
+				<input type="text" name="zip" placeholder="Enter zip code" class="form_field" v-model="zipCode">
 			</div>
 			<button class="btn form_btn" @click="addCity">Add location</button>
 			<div class="form_error">{{error}}</div> 
@@ -12,7 +12,9 @@
 			<h3>Cities list!</h3>
 			<p v-if="!cities.length">No result. Please, try fill form!</p>
 			<ul v-if="cities.length" class="result_list">
-				<li class="city_item" v-for="city in cities" :key="city.id">{{ city.city }}</li>
+				<li class="city_item" v-for="city in cities" :key="city.id">
+					<div>{{ city.city }}, {{ city.state }}</div>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -23,7 +25,7 @@
 <script>
 
 export default {
-	name: 'ZipCode',
+	name: 'ZipBlock',
 	data() {
 		return {
       		zipCode: '',
