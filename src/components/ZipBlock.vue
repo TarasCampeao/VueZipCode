@@ -6,14 +6,18 @@
 				<input type="text" name="zip" placeholder="Enter zip code" class="form_field" v-model="zipCode">
 			</div>
 			<button class="btn form_btn" @click="addCity">Add location</button>
-			<div class="form_error">{{error}}</div> 
+			<div class="form_error">{{error}}</div>
+			<!-- <div class="form_error" v-if="!showAlert">{{alertMessage}}</div> -->
 		</div>
 		<div class="city_zone">
 			<h3>Cities list!</h3>
-			<p v-if="!cities.length">No result. Please, try fill form!</p>
+			<p v-if="!cities.length">No results. Please, try fill form!</p>
 			<ul v-if="cities.length" class="result_list">
 				<li class="city_item" v-for="city in cities" :key="city.id">
 					<div>{{ city.city }}, {{ city.state }}</div>
+			        <button class="delete_btn" @click="removeUser(city, index)">
+			        	<i class="far fa-trash-alt"></i>
+			        </button>
 				</li>
 			</ul>
 		</div>
@@ -59,13 +63,16 @@ export default {
 	              this.error = 'Sorry, but ' + response.body.Error;
 	              this.zipCode = '';
 	          } else if ( response.body.hasOwnProperty('City') ) {
-	              this.error = 'Sorry, but city is already in your list';
+	              this.error = 'Sorry, but city is already in your list!';
 	              this.zipCode = '';
 	          } else {
-	              this.error = 'Sorry, but there is no city with such a zip-code';
+	              this.error = 'Sorry, but there is no city with such a zip-code!';
 	              this.zipCode = ''; 
-	          }        
-	      })
+	          }     
+	      });
+	    },
+	    removeUser(user, index) {
+	    	this.cities.splice(index, 1);
 	    },
   	}
 }
