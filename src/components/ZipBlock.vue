@@ -30,13 +30,12 @@
 
 
 <script>
-
 export default {
 	name: 'ZipBlock',
 	data() {
 		return {
       		zipCode: '',
-      		API_KEY: 'P7CMHOSQTWQEJQJB8OTC',
+      		API_KEY: 'NGGN3Q9JW78UFEPINI8J',
       		requestURL: 'https://api.zip-codes.com/ZipCodesAPI.svc/1.0',
       		cities: [],
       		sameCity: false,
@@ -95,5 +94,4 @@ export default {
   		}
   	}
 }
-
 </script>
